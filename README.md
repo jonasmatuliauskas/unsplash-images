@@ -1,6 +1,5 @@
 # How to install and run project:
-
-$ git clone <project>
-$ cd path/to/<project>
-$ npm install
-$ npm run
+    $ git clone <project>
+    $ cd path/to/<project>
+    $ npm install
+    $ npm run
