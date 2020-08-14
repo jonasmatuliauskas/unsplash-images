@@ -4,8 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     list: [],
     loading: false,
-    hasResult: false,
-    firstSearch: true,
+    hasResult: true,
     queries: []
 }
 
@@ -14,17 +13,15 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_IMAGES_START:
             return {
                 ...state,
+                list: [],
+                hasResult: true,
                 loading: true
             }
         case actionTypes.FETCH_IMAGES_SUCCESS:
             return {
                 ...state,
-                list: [
-                    ...state.images,
-                    ...action.result
-                ],
-                hasResult: !!action.result.length,
-                firstSearch: false,
+                list: action.images,
+                hasResult: !!action.images.length,
                 loading: false
             }
         case actionTypes.FETCH_IMAGES_FAILED:

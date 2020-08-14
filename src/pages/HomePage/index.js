@@ -54,7 +54,7 @@ const HomePage = () => {
                                 ERROR
                             </Alert>
                         )}
-                        {(!images.hasResult && !images.firstSearch &&
+                        {(!images.hasResult &&
                             <Alert type="info">
                                 NO RESULT
                             </Alert>
@@ -66,7 +66,7 @@ const HomePage = () => {
                             <Typography variant="h6">
                                 Search history
                             </Typography>
-                            <List onClick={() => loadImages(query)} list={queries}/>
+                            <List onClick={loadImages} list={queries}/>
                         </>
                     )}
                 </Grid>

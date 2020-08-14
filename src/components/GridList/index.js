@@ -1,16 +1,15 @@
 import React from 'react'
-import MaterialGridList from '@material-ui/core/GridList';
-import MaterialGridListTile from '@material-ui/core/GridList';
+import { GridList as MaterialGridList, GridListTile as MaterialGridListTile } from '@material-ui/core/';
 import PropTypes from 'prop-types';
 
 const GridList = ({ data, cellHeight, rowCols, imgCols }) => (
     <MaterialGridList cellHeight={cellHeight} cols={rowCols}>
-        {data.map((img) => (
-        <MaterialGridListTile key={img.img} cols={imgCols}>
-            <img src={img.img} alt={img.title} />
-        </MaterialGridListTile>
-        ))}
-    </MaterialGridList>
+    {data.map((tile) => (
+      <MaterialGridListTile key={tile.id} cols={imgCols}>
+        <img src={tile.src} alt={tile.title} />
+      </MaterialGridListTile>
+    ))}
+  </MaterialGridList>
 )
 
 GridList.propTypes = {

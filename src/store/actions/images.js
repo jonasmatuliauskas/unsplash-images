@@ -4,7 +4,7 @@ import axios from '../../axios';
 export const fetchImagesSuccess = (images) => {
     return {
         type: actionTypes.FETCH_IMAGES_SUCCESS,
-        images: images
+        images
     }
 }
 
@@ -31,13 +31,14 @@ export const saveSearchQuery = (query) => {
 export const fetchImages = (query) => {
     return dispatch => {
         dispatch(fetchImagesStart());
-        // TODO: delete
-        console.log(query)
-        axios.get(`/`)
+        axios.get(`/search/photos?query=${query}`)
             .then(res => {
-                // TODO: delete
-                console.log(res)
-                dispatch(fetchImagesSuccess(res))
+                const images = res.data.results.map(image => ({
+                    id: image.id,
+                    title: image.alt_description,
+                    src: image.urls.small
+                }))
+                dispatch(fetchImagesSuccess(images))
             })
             .catch(err => {
                 dispatch(fetchImagesFailed(err))
